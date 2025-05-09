@@ -1,0 +1,105 @@
+/* Fuente moderna (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Estilo general */
+body {
+    background: radial-gradient(circle at center, #1f1f1f, #2c2c2c);  /* Fondo más claro */
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 30px;
+}
+
+/* Títulos con estilo sci-fi */
+h1, h2, h3 {
+    text-transform: uppercase;
+    color: #00b3b3;  /* Color más claro para los títulos */
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px #00b3b3;
+}
+
+/* Caja principal estilo interfaz */
+.container {
+    background: rgba(255, 255, 255, 0.1);  /* Fondo más transparente */
+    border: 1px solid rgba(0, 255, 255, 0.3);  /* Borde más brillante */
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);  /* Sombra más suave */
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Botones estilo holograma */
+button {
+    background: linear-gradient(145deg, #00b3b3, #009999);  /* Colores más suaves */
+    border: none;
+    color: #000;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0,255,255,0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0,255,255,0.9);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Inputs modernos */
+input, textarea {
+    background: rgba(255, 255, 255, 0.1);  /* Fondo más claro */
+    border: 1px solid #00b3b3;  /* Borde más brillante */
+    padding: 10px;
+    border-radius: 6px;
+    color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Detalle de UI */
+hr {
+    border: none;
+    border-top: 1px solid #00b3b333;  /* Línea de separación más suave */
+    margin: 20px 0;
+}
+
+/* Estilo para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid rgba(0, 255, 255, 0.5);  /* Bordes visibles de la tabla */
+    padding: 12px 18px;
+    text-align: center;
+    font-size: 14px;
+}
+
+table th {
+    background-color: rgba(0, 255, 255, 0.15);  /* Fondo más suave en los encabezados */
+    color: #00b3b3;  /* Color de texto más suave */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+table tr:nth-child(even) {
+    background-color: rgba(0, 255, 255, 0.05);  /* Fondo más suave en filas pares */
+}
+
+table tr:hover {
+    background-color: rgba(0, 255, 255, 0.2);  /* Efecto hover más suave */
+}
+
