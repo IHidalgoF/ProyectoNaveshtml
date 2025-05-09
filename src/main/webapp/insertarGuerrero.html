@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Insertar Guerrero</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
+<h1>INSERTAR GUERREROS</h1>
   <form action="ListadoVehiculos.html" method="get">
     <label for="nombre">Nombre:</label><br>
     <input type="text" id="nombre" name="nombre" maxlength="30" required><br><br>
 
     <label for="tipo">Tipo:</label><br>
     <select name="tipo" id="tipo" required>
-      <option value="Nave">Nave</option>
-      <option value="Tanque">Tanque</option>
+      <option value="Guerrero">Guerrero</option>
+      <option value="Soldado">Soldado</option>
     </select><br><br>
 
     <label for="ataque">Ataque:</label><br>
@@ -22,7 +23,7 @@
     <label for="defensa">Defensa:</label><br>
     <input type="text" id="defensa" name="defensa" maxlength="30" required><br><br>
 
-    <button type="submit">Guardar</button>
+    <button type="button" onclick="window.location.href='TablaGuerreros.html'">Guardar</button>
   </form>
 </body>
 </html>
