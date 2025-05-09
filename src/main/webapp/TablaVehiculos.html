@@ -3,67 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <title>VEHICULOS</title>
- <link rel="stylesheet" href="estilo.css">
+<link rel="stylesheet" href="estilo.css">
 
 </head>
 <body>
-<h1>VEHÍCULOS</h1>
-<button class="top-right-button"><img src="imagenes/off.png" height="25px" width="25px"></button>
-<table >
-	<thead>
-		<tr>
-            <th colspan="8">LISTADO VEHICULOS</th>
-        </tr>
-        <tr>
-            <th colspan="2">NOMBRE</th>
-            <th>TIPO</th>
-            <th>VIDA</th>
-            <th>ATAQUE</th>
-            <th>DEFENSA</th>
-            <th colspan="2">NUMERO GUERREROS</th>
-        </tr>
-	</thead>
-	
-	<tbody>
-		<tr>
-			<td>X</td>
-			<td><a href="Alfredo_datos.html">NAVE1</a></td>
-			<td>TANQUE</td>
-			<td>1000</td>
-			<td>8</td>
-			<td>2</td>
-			<td>1</td>
-			<td>X</td>
-		</tr>
-		<tr>
-			<td>X</td>
-			<td><a href="Alfredo_datos.html">NAVE2</a></td>
-			<td>NAVE DESTRUCTORA</td>
-			<td>1000</td>
-			<td>5</td>
-			<td>5</td>
-			<td>0</td>
-			<td>X</td>
-		</tr>
-		<tr>
-			<td>X</td>
-			<td><a href="Alfredo_datos.html">NAVE3</a></td>
-			<td>TANQUE</td>
-			<td>1000</td>
-			<td>6</td>
-			<td>4</td>
-			<td>5</td>
-			<td>X</td>
-		</tr>
-		
-	</tbody>
-	
-	<tfoot></tfoot>
-	
-	
-</table>
-<br>
-<button type="button" onclick="window.location.href='insertarVehiculo.html'">AÑADIR VEHÍCULO</button>
-<button type="button" onclick="window.location.href='registrarCliente.html'">INICIAR COMBATE</button>
+	<h1>VEHÍCULOS</h1>
+	<button class="top-right-button">
+		<img src="imagenes/off.png" height="25px" width="25px"
+			onclick="window.location.href='index.html'">
+	</button>
+	<table>
+		<thead>
+			<tr>
+				<th colspan="8">LISTADO VEHICULOS</th>
+			</tr>
+			<tr>
+				<th colspan="2">NOMBRE</th>
+				<th>TIPO</th>
+				<th>VIDA</th>
+				<th>ATAQUE</th>
+				<th>DEFENSA</th>
+				<th colspan="2">NUMERO GUERRERO</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td><img src="imagenes/delete.png" height="25px" width="25px"
+					onclick="window.location.href='index.html'"></td>
+
+				<td><a href="Alfredo_datos.html">NAVE1</a></td>
+				<td>TANQUE</td>
+				<td>1000</td>
+				<td>8</td>
+				<td>2</td>
+				<td>1</td>
+				<td><img src="imagenes/añadir.jpg" height="25px" width="25px"
+					onclick="window.location.href='insertarGuerrero.html'"></td>
+			</tr>
+			<tr>
+				<td><img src="imagenes/delete.png" height="25px" width="25px"
+					onclick="window.location.href='index.html'"></td>
+				<td><a href="Alfredo_datos.html">NAVE2</a></td>
+				<td>NAVE DESTRUCTORA</td>
+				<td>1000</td>
+				<td>5</td>
+				<td>5</td>
+				<td>0</td>
+				<td>X</td>
+			</tr>
+			<tr>
+				<td><img src="imagenes/delete.png" height="25px" width="25px"
+					onclick="window.location.href='index.html'"></td>
+				<td><a href="Alfredo_datos.html">NAVE3</a></td>
+				<td>TANQUE</td>
+				<td>1000</td>
+				<td>6</td>
+				<td>4</td>
+				<td>5</td>
+				<td>X</td>
+			</tr>
+
+		</tbody>
+
+		<tfoot></tfoot>
+
+
+	</table>
+	<br>
+	<button type="button"
+		onclick="window.location.href='insertarVehiculo.html'">AÑADIR
+		VEHÍCULO</button>
+	<button type="button"
+		onclick="window.location.href='registrarCliente.html'">INICIAR
+		COMBATE</button>
 </body>
 </html>
