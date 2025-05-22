@@ -1,8 +1,8 @@
 package Naves.entities;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.hibernate.validator.internal.util.logging.LoggerFactory;
 
+import ch.qos.logback.classic.Logger;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
