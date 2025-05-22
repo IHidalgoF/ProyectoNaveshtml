@@ -1,0 +1,1024 @@
+2025-05-22 19:53:51 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.12.Final
+2025-05-22 19:53:52 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-22 19:53:52 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-05-22 19:53:52 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-22 19:53:52 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:oracle:thin:@localhost:1522:XE]
+	Database driver: oracle.jdbc.OracleDriver
+	Database version: 21.3
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-05-22 19:53:52 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-05-22 19:53:53 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-22 19:53:53 [main] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@70139a81] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-05-22 19:53:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify usuario varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify usuario varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:14)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:53:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify apellidos varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify apellidos varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:14)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:53:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify nombre varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify nombre varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:14)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:54:10 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.12.Final
+2025-05-22 19:54:10 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-22 19:54:10 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-05-22 19:54:11 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-22 19:54:11 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:oracle:thin:@localhost:1522:XE]
+	Database driver: oracle.jdbc.OracleDriver
+	Database version: 21.3
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-05-22 19:54:11 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-05-22 19:54:11 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-22 19:54:11 [main] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1760e594] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-05-22 19:54:11 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify usuario varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify usuario varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:14)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:54:11 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify apellidos varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify apellidos varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:14)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:54:11 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify nombre varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify nombre varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:14)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:55:02 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.12.Final
+2025-05-22 19:55:03 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-22 19:55:03 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-05-22 19:55:03 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-22 19:55:03 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:oracle:thin:@localhost:1522:XE]
+	Database driver: oracle.jdbc.OracleDriver
+	Database version: 21.3
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-05-22 19:55:03 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-05-22 19:55:04 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-22 19:55:04 [main] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@14590fe2] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-05-22 19:55:04 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify usuario varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify usuario varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:12)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:55:04 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify apellidos varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify apellidos varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:12)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:55:04 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify nombre varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify nombre varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:12)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:55:42 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.12.Final
+2025-05-22 19:55:42 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-22 19:55:42 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-05-22 19:55:42 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-22 19:55:42 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:oracle:thin:@localhost:1522:XE]
+	Database driver: oracle.jdbc.OracleDriver
+	Database version: 21.3
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-05-22 19:55:43 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-05-22 19:55:43 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-22 19:55:43 [main] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@4af70b83] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-05-22 19:55:43 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify usuario varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify usuario varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:12)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:55:43 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify apellidos varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify apellidos varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:12)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:55:43 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify nombre varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify nombre varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:12)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:56:02 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.12.Final
+2025-05-22 19:56:02 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-22 19:56:03 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-05-22 19:56:03 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-22 19:56:03 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:oracle:thin:@localhost:1522:XE]
+	Database driver: oracle.jdbc.OracleDriver
+	Database version: 21.3
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-05-22 19:56:03 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-05-22 19:56:04 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-22 19:56:04 [main] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1760e594] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-05-22 19:56:04 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify usuario varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify usuario varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:12)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:56:04 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify apellidos varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify apellidos varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:12)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:56:04 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table TB_USUARIOS 
+       modify nombre varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table TB_USUARIOS 
+       modify nombre varchar2(255 char)" via JDBC [ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:334)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:12)
+Caused by: java.sql.SQLException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+https://docs.oracle.com/error-help/db/ora-00054/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-00054: recurso ocupado y obtenido con NOWAIT especificado o timeout vencido
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:58:03 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.12.Final
+2025-05-22 19:58:03 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-22 19:58:03 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-05-22 19:58:04 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-22 19:58:04 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:oracle:thin:@localhost:1522:XE]
+	Database driver: oracle.jdbc.OracleDriver
+	Database version: 21.3
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-05-22 19:58:04 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-05-22 19:58:05 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-22 19:58:05 [main] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6fbe4800] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-05-22 19:58:05 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table TB_USUARIOS (
+        usuario varchar2(255 char) generated by default as identity,
+        apellidos varchar2(255 char) not null,
+        contrasenya varchar2(255 char) not null,
+        nombre varchar2(255 char) not null,
+        primary key (usuario)
+    )" via JDBC [ORA-30675: la columna de identidad debe tener un tipo numérico
+
+https://docs.oracle.com/error-help/db/ora-30675/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table TB_USUARIOS (
+        usuario varchar2(255 char) generated by default as identity,
+        apellidos varchar2(255 char) not null,
+        contrasenya varchar2(255 char) not null,
+        nombre varchar2(255 char) not null,
+        primary key (usuario)
+    )" via JDBC [ORA-30675: la columna de identidad debe tener un tipo numérico
+
+https://docs.oracle.com/error-help/db/ora-30675/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:316)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:80)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:12)
+Caused by: java.sql.SQLException: ORA-30675: la columna de identidad debe tener un tipo numérico
+
+https://docs.oracle.com/error-help/db/ora-30675/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-30675: la columna de identidad debe tener un tipo numérico
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 19:59:38 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.12.Final
+2025-05-22 19:59:38 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-22 19:59:38 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-05-22 19:59:39 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-22 19:59:39 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:oracle:thin:@localhost:1522:XE]
+	Database driver: oracle.jdbc.OracleDriver
+	Database version: 21.3
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-05-22 19:59:39 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-05-22 19:59:39 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-22 19:59:39 [main] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@4af70b83] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-05-22 19:59:39 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table TB_USUARIOS (
+        usuario varchar2(255 char) generated by default as identity,
+        apellidos varchar2(255 char) not null,
+        contrasenya varchar2(255 char) not null,
+        nombre varchar2(255 char) not null,
+        primary key (usuario)
+    )" via JDBC [ORA-30675: la columna de identidad debe tener un tipo numérico
+
+https://docs.oracle.com/error-help/db/ora-30675/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table TB_USUARIOS (
+        usuario varchar2(255 char) generated by default as identity,
+        apellidos varchar2(255 char) not null,
+        contrasenya varchar2(255 char) not null,
+        nombre varchar2(255 char) not null,
+        primary key (usuario)
+    )" via JDBC [ORA-30675: la columna de identidad debe tener un tipo numérico
+
+https://docs.oracle.com/error-help/db/ora-30675/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:576)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:516)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:316)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:80)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:233)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:112)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:980)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at Naves.HibernateUtil.generateSession(HibernateUtil.java:14)
+	at Naves.HibernateUtil.getSession(HibernateUtil.java:25)
+	at PREUBA.main(PREUBA.java:20)
+Caused by: java.sql.SQLException: ORA-30675: la columna de identidad debe tener un tipo numérico
+
+https://docs.oracle.com/error-help/db/ora-30675/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:615)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1372)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:524)
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:192)
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1401)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:2009)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1622)
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2687)
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2636)
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:337)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 19 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-30675: la columna de identidad debe tener un tipo numérico
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:723)
+	... 32 common frames omitted
+2025-05-22 20:00:54 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.12.Final
+2025-05-22 20:00:54 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-22 20:00:54 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-05-22 20:00:55 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-22 20:00:55 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:oracle:thin:@localhost:1522:XE]
+	Database driver: oracle.jdbc.OracleDriver
+	Database version: 21.3
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-05-22 20:00:55 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-05-22 20:00:56 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-22 20:00:56 [main] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6b9a1205] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
