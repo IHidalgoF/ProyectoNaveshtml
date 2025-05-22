@@ -80,7 +80,59 @@
 			<version>3.1.1</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- Expression Language API (si usas EL en JSPs) -->
+	<dependency>
+    <groupId>jakarta.el</groupId>
+    <artifactId>jakarta.el-api</artifactId>
+    <version>5.0.0</version>
+    <scope>provided</scope>
+	</dependency>
+
 		
+		<dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>2.0.7</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.5.6</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 -->
+      <dependency>
+          <groupId>com.oracle.database.jdbc</groupId>
+          <artifactId>ojdbc11</artifactId>
+          <version>23.7.0.25.01</version>
+      </dependency>
+
+      <!-- Hibernate Core -->
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>6.6.12.Final</version>
+      </dependency>
+
+      <!-- JPA API -->
+   <dependency>
+    <groupId>jakarta.persistence</groupId>
+    <artifactId>jakarta.persistence-api</artifactId>
+    <version>3.1.0</version> <!-- O la versión que necesites -->
+	</dependency>
+
+      <dependency>
+        <groupId>org.hibernate.validator</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>8.0.1.Final</version>
+      </dependency>
+      
+     <!--dependencia necesaria para quitar los errores del jsp al trabajar con Servlet 5.0 (jakarta.servlet)-->
+    <dependency>
+    <groupId>jakarta.servlet</groupId>
+    <artifactId>jakarta.servlet-api</artifactId>
+    <version>5.0.0</version>  <!-- O la versión adecuada -->
+    <scope>provided</scope>
+	</dependency>
 		
 	</dependencies>
 	<build>

@@ -26,4 +26,7 @@ public class GuerreroDTO {
 
     public int getDefensa() { return defensa; }
     public void setDefensa(int defensa) { this.defensa = defensa; }
+    
+    
+   
 }
