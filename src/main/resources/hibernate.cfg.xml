@@ -33,8 +33,8 @@
         create-only:	Crea el esquema al iniciar, pero no lo elimina al cerrar (Hibernate 5.5+). -->
         <!-- Entidad mapeada -->
       
-        <mapping class="Naves.entities.Guerrero"/>
-        <mapping class="Naves.entities.VehiculoGuerra"/>
+       <!--  <mapping class="Naves.entities.Guerrero"/> -->
+       <!-- <mapping class="Naves.entities.VehiculoGuerra"/> -->
         <mapping class="Naves.entities.Usuarios"/>
     </session-factory>
 </hibernate-configuration>

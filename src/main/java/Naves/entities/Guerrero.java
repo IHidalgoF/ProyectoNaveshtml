@@ -18,7 +18,7 @@ public class Guerrero {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	private static final Logger logger = LoggerFactory.getLogger(Guerrero.class);
+	//private static final Logger logger = LoggerFactory.getLogger(Guerrero.class); 
 	private String nombre;
 	private String tipo;
 	private double fuerza;
@@ -49,7 +49,7 @@ public class Guerrero {
 	        this.resistencia = 5.00;
 	        
 	        // Advertir que se ajustaron los valores
-	        logger.warn("Fuerza + resistencia del guerrero > 10. Valores fuerza y resistencia ajustados a 5");
+	       // logger.warn("Fuerza + resistencia del guerrero > 10. Valores fuerza y resistencia ajustados a 5");
 	    } else {
 	        // Si no exceden, asignar los valores proporcionados
 	        this.fuerza = fuerza;
@@ -122,9 +122,9 @@ public class Guerrero {
 	}
 
 
-	public static Logger getLogger() {
-		return logger;
-	}
+	//public static Logger getLogger() {
+	//	return logger;
+	//}
 
 
 	@Override

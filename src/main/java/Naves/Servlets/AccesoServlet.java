@@ -21,7 +21,7 @@ public class AccesoServlet extends HttpServlet {
         UsuariosDAO dao = new UsuariosDAOImpl();
         
         List<Usuarios> usuarios = dao.findAll();
-        		
+        System.out.println(usuarios.size())	;
         boolean autenticado = false;
         
         // Lógica para verificar si el nombre de usuario y la contraseña coinciden con alguno de los usuarios en la lista
@@ -37,7 +37,7 @@ public class AccesoServlet extends HttpServlet {
         if (autenticado) {
             response.sendRedirect("TablaGuerreros.html");
         } else {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("acceso.jsp");
         }
     }
 }
