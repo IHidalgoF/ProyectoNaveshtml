@@ -39,8 +39,7 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.5.6</version>
 		</dependency>
-
-		<!-- Oracle JDBC Driver -->
+				<!-- Oracle JDBC Driver -->
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc11</artifactId>
@@ -136,7 +135,7 @@
 		
 	</dependencies>
 	<build>
-		<finalName>CopiaProyectoNaveshtml2</finalName>
+		<finalName>ProyectoNaveshtml</finalName>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven
 			defaults (may be moved to parent pom) -->
 			<plugins>
