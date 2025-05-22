@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<web-app 
-version="4.0"
-    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:javaee="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xml="http://www.w3.org/XML/1998/namespace"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
-
-	<display-name>ProyectoNaveshtml</display-name>
-	<servlet>
-		<description>
-=======
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:javaee="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
   <display-name>ProyectoNaveshtml</display-name>
   <servlet>
     <description>
->>>>>>> branch 'master' of https://github.com/IHidalgoF/ProyectoNaveshtml.git
 		</description>
     <display-name>Servlet</display-name>
     <servlet-name>Servlet</servlet-name>
