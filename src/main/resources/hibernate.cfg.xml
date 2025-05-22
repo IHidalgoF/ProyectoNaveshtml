@@ -5,15 +5,15 @@
     <session-factory>
 
         <!-- Conexión JDBC -->
- 		<!--<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+ 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
         <property name="hibernate.connection.url">jdbc:oracle:thin:ISAH/password@localhost:1522:XE</property>
         <property name="hibernate.connection.username">ISAH</property>
-        <property name="hibernate.connection.password">password</property> -->
+        <property name="hibernate.connection.password">password</property>
         
-        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+       <!-- <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
         <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1522:XE</property>
         <property name="hibernate.connection.username">jose</property>
-        <property name="hibernate.connection.password">password</property>
+        <property name="hibernate.connection.password">password</property> -->
 
         <!-- Dialecto de Hibernate -->
         <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>

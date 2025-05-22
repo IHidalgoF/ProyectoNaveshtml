@@ -37,7 +37,10 @@ public class AccesoServlet extends HttpServlet {
         if (autenticado) {
             response.sendRedirect("TablaGuerreros.html");
         } else {
-            response.sendRedirect("acceso.jsp");
+        	  // Agregar el mensaje al request
+            request.setAttribute("mensajeError", "Usuario o contraseña incorrectos");
+            // Reenviar la solicitud a acceso.jsp (no redireccionar)
+            request.getRequestDispatcher("acceso.jsp").forward(request, response);
         }
     }
 }

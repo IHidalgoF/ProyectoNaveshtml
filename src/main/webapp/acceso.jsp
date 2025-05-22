@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<% if (request.getAttribute("mensajeError") != null) { %>
+    <p style="color: red;"><%= request.getAttribute("mensajeError") %></p>
+<% } %>
+
 <meta charset="UTF-8">
 <title>FORMULARIO DE ACCESO</title>
  <link rel="stylesheet" href="estilo.css">
