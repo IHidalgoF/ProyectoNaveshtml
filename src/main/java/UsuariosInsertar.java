@@ -6,15 +6,15 @@ import Naves.HibernateUtil;
 import Naves.entities.Usuarios;
 
 
-public class PREUBA {
+public class UsuariosInsertar {
 	public static void main(String[] args) {
 	
 		
 		Usuarios u1 = new Usuarios();
-		u1.setApellidos("sdgfdfgfas");
-		u1.setContrasenya("srwerwersdff");
-		u1.setNombre("sdas");
-		u1.setUsuario("adfgdfgsas");
+		u1.setApellidos("Perez");
+		u1.setContrasenya("contrasenya1");
+		u1.setNombre("Juan");
+		u1.setUsuario("juan12a");
 
 			
 		Session session = HibernateUtil.getSession();
