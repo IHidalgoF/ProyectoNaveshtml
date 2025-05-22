@@ -2,20 +2,13 @@ package Naves.dao;
 
 import java.util.List;
 
-import org.hibernate.Session;
-
-import Naves.HibernateUtil;
 import Naves.entities.Usuarios;
 
 
-public class UsuariosDAO implements DAOImp {
-	@Override
-	public List<Usuarios> findAll() {
-		Session session = HibernateUtil.getSession();
-		List<Usuarios> lista = session.createQuery("from Usuarios",Usuarios.class).list();
-		
-		return lista;
-	}
+public interface UsuariosDAO {
+	
+public List<Usuarios> findAll();
+	
 
 
 }

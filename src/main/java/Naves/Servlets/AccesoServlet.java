@@ -1,7 +1,11 @@
 package Naves.Servlets;
 
 import java.io.IOException;
+import java.util.List;
 
+import Naves.dao.UsuariosDAO;
+import Naves.dao.UsuariosDAOImpl;
+import Naves.entities.Usuarios;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,16 +18,25 @@ public class AccesoServlet extends HttpServlet {
         String username = request.getParameter("usuario");
         String password = request.getParameter("contrasenya");
         
-        //LoginDao dao = new LoginDAOImpl();
+        UsuariosDAO dao = new UsuariosDAOImpl();
         
-        //List<Usuarios> usuarios = dao.consutarUsuarios();
+        List<Usuarios> usuarios = dao.findAll();
         		
-        // Lógica de validación (puedes hacerlo contra una base de datos SQL)
-        if (username.equals("admin") && password.equals("12345")) {
-            // Si la autenticación es exitosa, redirige a la página de inicio
+        boolean autenticado = false;
+        
+        // Lógica para verificar si el nombre de usuario y la contraseña coinciden con alguno de los usuarios en la lista
+        for (Usuarios usuario : usuarios) {
+        	System.out.println(usuario);
+            if (usuario.getUsuario().equals(username) && usuario.getContrasenya().equals(password)) {
+                autenticado = true;
+                break; // Si encontramos una coincidencia, salimos del bucle
+            }
+        }
+
+        // Si la autenticación es exitosa, redirige a la página de inicio, de lo contrario, al login
+        if (autenticado) {
             response.sendRedirect("TablaGuerreros.html");
         } else {
-            // Si el login falla, redirige de nuevo al login
             response.sendRedirect("login.jsp");
         }
     }
